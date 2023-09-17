@@ -13,20 +13,26 @@ use App\Http\Controllers\IndexController;
 |
 */
 Route::get('/', [IndexController::class, 'index']);
-Route::get('/catalog', [IndexController::class, 'catalog']);
-Route::get('/catalog/{id}', [IndexController::class, 'catalogindex']);
-Route::get('/page/{slug}', [IndexController::class, 'pageslug']);
-Route::post('/ajaxfilter', [IndexController::class, 'ajaxfilter']);
-Route::post('/ajaxszayavka', [IndexController::class, 'ajaxszayavka']);
-//Route::get('/ajaxpage/{id}', [IndexController::class, 'ajaxpage']);
-//Route::get('/category/{slug}', [IndexController::class, 'categoryslug']);
 
-//Route::get('/ob-avtore', [IndexController::class, 'obavtore']);
+//регистрация и авторизация
+Route::post('/reg', [IndexController::class, 'reg']);
+Route::post('/auth', [IndexController::class, 'auth']);
+
+Route::get('/logout', [IndexController::class, 'logout']);
+
+Route::post('/editprofile', [IndexController::class, 'editprofile']);
+
+Route::get('/policy', [IndexController::class, 'policy']);
+Route::get('/return', [IndexController::class, 'defreturn']);
+Route::get('/rules', [IndexController::class, 'rules']);
+Route::get('/bets/{id}', [IndexController::class, 'bets']);
+Route::get('/bets/{idsport}/{idtourn}', [IndexController::class, 'betsid']);
+Route::get('/bets/{idsport}/{idtourn}/{idgame}', [IndexController::class, 'betsgameid']);
 
 
-//Route::get('/post/{slug}', [IndexController::class, 'postslug']);
+//временный маршрут для проверок
+Route::get('/t', [IndexController::class, 't']);
 
-//Route::post('/addcomment', [IndexController::class, 'addcomment']);
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
